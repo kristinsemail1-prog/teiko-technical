@@ -5,9 +5,12 @@ import matplotlib.pyplot as plt
 import os
 
 DB = "teiko_analysis.db"
-if not os.path.exists(DB):
+@st.cache_data
+def create_database():
     os.system("python load_data.py")
     os.system("python Analysis.py")
+
+create_database()
 
 
 def read_table(table_name):
