@@ -161,3 +161,24 @@ def subset_analysis():
     con.close()
 
 subset_analysis()
+
+# Answer to the additional form question
+def melanoma_male_b_cell_average():
+    con = sqlite3.connect(DB)
+    samples = pd.read_sql_query("select * from samples", con)
+    con.close()
+
+    filtered_samples = samples[
+        (samples["condition"] == "melanoma") &
+        (samples["sex"] == "M") &
+        (samples["response"] == "yes") &
+        (samples["time_from_treatment_start"] == 0)
+    ]
+
+    average_b_cells = filtered_samples["b_cell"].mean()
+
+    print("Average B cells for melanoma male responders at time 0:",
+          round(average_b_cells, 2))
+
+
+melanoma_male_b_cell_average()
