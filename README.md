@@ -29,7 +29,7 @@ make pipeline
 make dashboard
 ```
 
-Open the dashboard at http://localhost:8501.
+Open the dashboard at [http://localhost:8501.](https://teiko-technical-gxe49jn99frast6hll7nkb.streamlit.app/)
 
 ## Project files
 
