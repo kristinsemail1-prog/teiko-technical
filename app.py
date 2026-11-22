@@ -2,13 +2,14 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
-import os
+import subprocess
+import sys
 
 DB = "teiko_analysis.db"
 @st.cache_data
 def create_database():
-    os.system("python load_data.py")
-    os.system("python Analysis.py")
+    subprocess.run([sys.executable, "load_data.py"], check=True)
+    subprocess.run([sys.executable, "Analysis.py"], check=True)
 
 create_database()
 
